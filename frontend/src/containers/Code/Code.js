@@ -29,7 +29,7 @@ const Code = () => {
     };
 
     return loading ? (<Spinner/>) : (
-        <div className='form'>
+        <div className='form' style={{display: 'flex', flexDirection: 'column'}}>
             <input
                 type="text"
                 className="Input"
@@ -38,6 +38,8 @@ const Code = () => {
                 onChange={e => dispatch(onChange(e.target))}
                 placeholder="encode"
             />
+            {!password ? (<Button disabled variant="contained" type='submit' onClick={encodeHandler} style={{margin: '0 auto'}}>Encode</Button>)
+                : ((<Button variant="contained" type='submit' onClick={encodeHandler} style={{margin: '0 auto'}}>Encode</Button>))}
             <input
                 type="text"
                 className="Input"
@@ -46,6 +48,9 @@ const Code = () => {
                 onChange={e => dispatch(onChange(e.target))}
                 placeholder="Password"
             />
+            {!password ? (<Button disabled variant="outlined" type='submit' onClick={decodeHandler} style={{margin: '0 auto'}}>Decode</Button>)
+                : ((<Button variant="outlined" type='submit' onClick={decodeHandler} style={{margin: '0 auto'}}>Decode</Button>))}
+
             <input
                 type="text"
                 className="Input"
@@ -54,8 +59,7 @@ const Code = () => {
                 onChange={e => dispatch(onChange(e.target))}
                 placeholder="Decode"
             />
-            <Button variant="contained" type='submit' onClick={encodeHandler}>Encode</Button>
-            <Button variant="outlined" type='submit' onClick={decodeHandler}>Decode</Button>
+
         </div>
     );
 };

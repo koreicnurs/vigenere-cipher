@@ -4,13 +4,13 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #703b09;
+    background-color: #56898d;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
     box-sizing: border-box;
-    z-index: 90; /* Should be lower than backdrop */
+    z-index: 90;
 }
 
 .Toolbar nav {
@@ -19,4 +19,12 @@
 
 .Toolbar-Logo {
     height: 80%;
+}
+
+.Toolbar-Logo {
+    font-size: 40px;
+    font-family: Suruma;
+    display: flex;
+    align-items: center;
+    color: #b3a8ff;
 }

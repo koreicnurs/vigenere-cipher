@@ -1,9 +1,5 @@
-form {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
+body {
+    background: azure;
 }
 
 .Input {
@@ -12,7 +8,7 @@ form {
     background-color: #b8d6e0;
     font: inherit;
     padding: 6px 30px;
-    margin: 10px auto;
+    margin: 25px auto;
     display: block;
     width: 100%;
     box-sizing: border-box;
@@ -20,6 +16,8 @@ form {
     font-family: Yrsa;
     font-size: 20px;
     color: #453e94;
+    max-width: 40%;
+    text-align: center;
 }
 
 .Input:focus {
@@ -27,27 +25,6 @@ form {
     background-color: #b9f1e6;
     color: #0d00ff;
     font-family: Sawasdee;
-}
-
-.img {
-    max-width: 50%;
-    margin: 50px 0;
-}
-
-.btn-form {
-    margin-bottom: 20px!important;
-}
-
-.title-photo {
-    font-size: 25px;
-    font-weight: bold;
-    color: #6f76c2;
-    font-family: Consolas;
-}
-
-.title-form {
-    color: #453e94;
-    font-family: BlinkMacSystemFont;
 }
 
 @media (min-width: 600px) {
