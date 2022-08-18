@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Button} from "@mui/material";
 import {decodeData, encodeData, onChange} from "../../store/actions/codeActions";
 import './Code.css';
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 const Code = () => {
     const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const Code = () => {
 
     };
 
-    return (
+    return loading ? (<Spinner/>) : (
         <div className='form'>
             <input
                 type="text"
