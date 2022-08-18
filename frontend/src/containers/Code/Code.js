@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "@mui/material";
 import './Code.css';
-import {encodeData} from "../../store/actions/codeActions";
+import {decodeData, encodeData} from "../../store/actions/codeActions";
 
 const Code = () => {
     const dispatch = useDispatch();
@@ -25,10 +25,19 @@ const Code = () => {
         }));
     };
 
-    const onSubmitHandler = async e => {
+    const encodeHandler = async e => {
         e.preventDefault();
         await dispatch(encodeData({
             'encode': code.encode,
+            'password': code.password
+        }));
+
+    };
+
+    const decodeHandler = async e => {
+        e.preventDefault();
+        await dispatch(decodeData({
+            'decode': code.decode,
             'password': code.password
         }));
 
@@ -56,12 +65,28 @@ const Code = () => {
                 type="text"
                 className="Input"
                 name="decode"
+                value={code.decode}
+                onChange={onInputChange}
+                placeholder="Decode"
+            />
+            <input
+                type="text"
+                className="Input"
+                name="decode"
+                value={encode}
+                onChange={onInputChange}
+                placeholder="Decode"
+            />
+            <input
+                type="text"
+                className="Input"
+                name="decode"
                 value={decode}
                 onChange={onInputChange}
                 placeholder="Decode"
             />
-            <Button className='btn-form' variant="contained" type='submit' onClick={onSubmitHandler}>Encode</Button>
-            <Button variant="outlined" type='submit' >Decode</Button>
+            <Button variant="contained" type='submit' onClick={encodeHandler}>Encode</Button>
+            <Button variant="outlined" type='submit' onClick={decodeHandler}>Decode</Button>
         </>
     );
 };

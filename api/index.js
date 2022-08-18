@@ -16,8 +16,7 @@ app.post('/encode', (req, res) => {
 });
 
 app.post('/decode', (req, res) => {
-    res.send(Vigenere.Decipher(req.body.password).crypt(req.body.message));
-    const decode = Vigenere.Cipher(req.body.password).crypt(req.body.encode)
+    const decode = (Vigenere.Decipher(req.body.password).crypt(req.body.decode))
     res.send(decode);
 });
 
