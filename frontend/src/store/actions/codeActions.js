@@ -8,6 +8,8 @@ export const POST_DECODE_REQUEST = 'POST_DECODE_REQUEST';
 export const POST_DECODE_SUCCESS = 'POST_DECODE_SUCCESS';
 export const POST_DECODE_FAILURE = 'POST_DECODE_FAILURE';
 
+export const ONCHANGE = 'ONCHANGE';
+
 export const postEncodeRequest = () => ({type: POST_ENCODE_REQUEST});
 export const postEncodeSuccess = code => ({type: POST_ENCODE_SUCCESS, payload: code});
 export const postEncodeFailure = error => ({type: POST_ENCODE_FAILURE, payload: error});
@@ -15,6 +17,8 @@ export const postEncodeFailure = error => ({type: POST_ENCODE_FAILURE, payload: 
 export const postDecodeRequest = () => ({type: POST_DECODE_REQUEST});
 export const postDecodeSuccess = code => ({type: POST_DECODE_SUCCESS, payload: code});
 export const postDecodeFailure = error => ({type: POST_DECODE_FAILURE, payload: error});
+
+export const onChange = ({name, value}) => ({type: ONCHANGE, payload: {name, value}});
 
 export const encodeData = codeData => {
     return async dispatch => {
@@ -30,7 +34,6 @@ export const encodeData = codeData => {
 };
 
 export const decodeData = codeData => {
-
     return async dispatch => {
         try {
             dispatch(postDecodeRequest());

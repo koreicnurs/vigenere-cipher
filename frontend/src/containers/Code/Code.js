@@ -1,35 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "@mui/material";
+import {decodeData, encodeData, onChange} from "../../store/actions/codeActions";
 import './Code.css';
-import {decodeData, encodeData} from "../../store/actions/codeActions";
 
 const Code = () => {
     const dispatch = useDispatch();
     const encode = useSelector(state => state.code.encode);
     const decode = useSelector(state => state.code.decode);
-    // const loading = useSelector(state => state.contactsCombine.loading);
-
-    const [code, setCode] = useState({
-        encode: '',
-        password: '',
-        decode: ''
-    });
-
-    const onInputChange = (e) => {
-        const {name, value} = e.target;
-
-        setCode(prev => ({
-            ...prev,
-            [name]: value,
-        }));
-    };
+    const password = useSelector(state => state.code.password);
+    const loading = useSelector(state => state.code.loading);
 
     const encodeHandler = async e => {
         e.preventDefault();
         await dispatch(encodeData({
-            'encode': code.encode,
-            'password': code.password
+            'encode': encode,
+            'password': password
         }));
 
     };
@@ -37,57 +23,43 @@ const Code = () => {
     const decodeHandler = async e => {
         e.preventDefault();
         await dispatch(decodeData({
-            'decode': code.decode,
-            'password': code.password
+            'decode': decode,
+            'password': password
         }));
 
     };
 
     return (
-        <>
+        <div className='form'>
             <input
                 type="text"
                 className="Input"
                 name="encode"
-                value={code.encode}
-                onChange={onInputChange}
+                value={encode}
+                onChange={e => dispatch(onChange(e.target))}
                 placeholder="encode"
             />
             <input
                 type="text"
                 className="Input"
                 name="password"
-                value={code.password}
-                onChange={onInputChange}
+                value={password}
+                onChange={e => dispatch(onChange(e.target))}
+                // onChange={onInputChange}
                 placeholder="Password"
             />
             <input
                 type="text"
                 className="Input"
                 name="decode"
-                value={code.decode}
-                onChange={onInputChange}
-                placeholder="Decode"
-            />
-            <input
-                type="text"
-                className="Input"
-                name="decode"
-                value={encode}
-                onChange={onInputChange}
-                placeholder="Decode"
-            />
-            <input
-                type="text"
-                className="Input"
-                name="decode"
                 value={decode}
-                onChange={onInputChange}
+                onChange={e => dispatch(onChange(e.target))}
+                // onChange={onInputChange}
                 placeholder="Decode"
             />
             <Button variant="contained" type='submit' onClick={encodeHandler}>Encode</Button>
             <Button variant="outlined" type='submit' onClick={decodeHandler}>Decode</Button>
-        </>
+        </div>
     );
 };
 
