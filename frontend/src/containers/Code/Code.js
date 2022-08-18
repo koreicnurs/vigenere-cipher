@@ -2,8 +2,8 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "@mui/material";
 import {decodeData, encodeData, onChange} from "../../store/actions/codeActions";
-import './Code.css';
 import Spinner from "../../components/UI/Spinner/Spinner";
+import './Code.css';
 
 const Code = () => {
     const dispatch = useDispatch();
@@ -18,7 +18,6 @@ const Code = () => {
             'encode': encode,
             'password': password
         }));
-
     };
 
     const decodeHandler = async e => {
@@ -27,7 +26,6 @@ const Code = () => {
             'decode': decode,
             'password': password
         }));
-
     };
 
     return loading ? (<Spinner/>) : (
@@ -46,7 +44,6 @@ const Code = () => {
                 name="password"
                 value={password}
                 onChange={e => dispatch(onChange(e.target))}
-                // onChange={onInputChange}
                 placeholder="Password"
             />
             <input
@@ -55,7 +52,6 @@ const Code = () => {
                 name="decode"
                 value={decode}
                 onChange={e => dispatch(onChange(e.target))}
-                // onChange={onInputChange}
                 placeholder="Decode"
             />
             <Button variant="contained" type='submit' onClick={encodeHandler}>Encode</Button>
